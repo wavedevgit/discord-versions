@@ -1,0 +1,42 @@
+name: Get discord versions
+
+on:
+    schedule:
+        - cron: '*/5 * * * *'
+    workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+            packages: write
+            pull-requests: write
+            issues: write
+            statuses: write
+            deployments: write
+
+        steps:
+            - name: Checkout discord_android branch
+              uses: actions/checkout@v4
+              with:
+                  ref: discord_android
+
+            - name: Use Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: '24.x'
+
+            - name: Run script
+              run: node src/main.js
+
+            - name: Set git identity
+              run: |
+                  git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                  git config --local user.name "github-actions[bot]"
+
+            - name: Commit & push changes
+              run: |
+                  git add --all
+                  git diff-index --quiet HEAD || git commit -am "✨New discord version"
+                  git push
