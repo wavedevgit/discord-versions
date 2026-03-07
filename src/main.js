@@ -123,15 +123,15 @@ async function main() {
         await mkdir('./data/ios');
         await mkdir('./data/android');
         await mkdir('./data/desktop/x86/linux', { recursive: true });
-        await mkdir('./data/desktop/x86/windows', { recursive: true });
+        await mkdir('./data/desktop/x86/win', { recursive: true });
         await mkdir('./data/desktop/x86/mac', { recursive: true });
 
         await mkdir('./data/desktop/x64/linux', { recursive: true });
-        await mkdir('./data/desktop/x64/windows', { recursive: true });
+        await mkdir('./data/desktop/x64/win', { recursive: true });
         await mkdir('./data/desktop/x64/mac', { recursive: true });
 
         await mkdir('./data/desktop/arm64/linux', { recursive: true });
-        await mkdir('./data/desktop/arm64/windows', { recursive: true });
+        await mkdir('./data/desktop/arm64/win', { recursive: true });
         await mkdir('./data/desktop/arm64/mac', { recursive: true });
     } catch (err) {
         console.log('failed to make dirs', err);
