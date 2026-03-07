@@ -79,8 +79,11 @@ async function getAndroidVersion(releaseChannel = 'alpha') {
         await execAsync(
             'unzip ./android_app_workdir/base.apk -d ./android_app_workdir/base',
         );
-        manifest = await fs.readFile(
-            './android_app_workdir/base/assets/manifest.json',
+        manifest = JSON.parse(
+            await fs.readFile(
+                './android_app_workdir/base/assets/manifest.json',
+                'utf-8',
+            ),
         );
 
         await fs.rm('./android_app_workdir', { recursive: true, force: true });
@@ -147,10 +150,14 @@ async function main() {
 
     // there is no way rn of getting ipa to get manifest.json and grab build number and commit hash sadly
     const ios = {
-        versionCode: await await fetch(
-            'https://itunes.apple.com/lookup?bundleId=com.hammerandchisel.discord',
-            fetchOpts,
-        ),
+        versionCode: (
+            await (
+                await fetch(
+                    'https://itunes.apple.com/lookup?bundleId=com.hammerandchisel.discord',
+                    fetchOpts,
+                )
+            ).json()
+        ).results?.[0]?.version,
     };
 
     await fs.writeFile('./data/ios/stable.json', JSON.stringify(ios));
