@@ -17,10 +17,8 @@ jobs:
             deployments: write
 
         steps:
-            - name: Checkout discord_android branch
+            - name: Checkout
               uses: actions/checkout@v4
-              with:
-                  ref: discord_android
 
             - name: Use Node.js
               uses: actions/setup-node@v3
