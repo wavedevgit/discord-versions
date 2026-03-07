@@ -50,13 +50,14 @@ async function getDesktopVersion(
         mac: 'osx',
         linux: 'linux',
     };
-    result.versionCode = (
-        await (
-            await fetch(
-                `https://discord.com/api/v9/updates/${releaseChannel}?platform=${Platforms[platform]}`,
-            )
-        ).json()
-    )?.name;
+    if (!result.versionCode)
+        result.versionCode = (
+            await (
+                await fetch(
+                    `https://discord.com/api/v9/updates/${releaseChannel}?platform=${Platforms[platform]}`,
+                )
+            ).json()
+        )?.name;
     return result;
 }
 
