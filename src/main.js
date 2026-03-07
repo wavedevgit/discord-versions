@@ -45,6 +45,11 @@ async function getDesktopVersion(
             ).json()
         ).full.host_version.join('.');
     }
+    const Platforms = {
+        win: 'win',
+        mac: 'osx',
+        linux: 'linux',
+    };
     result.versionCode = (
         await (
             await fetch(
