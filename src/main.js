@@ -93,8 +93,8 @@ async function getAndroidVersion(releaseChannel = 'alpha') {
         // this is not build number, build number is actually from manifest.json, this is only used for user agent
         versionNumber: latest[releaseChannel],
         versionCode: version.slice(0, -3) + '.' + version.slice(-2),
-        commitHash: manifest?.metadata?.commitHash,
-        buildNumber: manifest?.metadata?.build,
+        commitHash: manifest?.metadata?.commit,
+        buildNumber: Number(manifest?.metadata?.build),
     };
 }
 
