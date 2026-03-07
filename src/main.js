@@ -33,14 +33,16 @@ async function getWebVersion(releaseChannel = 'canary') {
 
 async function getDesktopVersion(
     releaseChannel = 'canary',
-    platform = 'windows',
+    platform = 'win',
+    arch = 'x64',
 ) {
     const result = {};
     if (platform === 'win') {
         result.versionCode = (
             await (
                 await fetch(
-                    `https://updates.discord.com/distributions/app/manifests/latest?channel=${releaseChannel}&platform=win&arch=x64`,
+                    `https://updates.discord.com/distributions/app/manifests/latest?channel=${releaseChannel}&platform=win&arch=` +
+                        arch,
                 )
             ).json()
         ).full.host_version.join('.');
@@ -51,6 +53,8 @@ async function getDesktopVersion(
         linux: 'linux',
     };
     if (!result.versionCode)
+        // this doesnt fucking have arch
+        // i'll honestly make this get all the info from the app bundle instead
         result.versionCode = (
             await (
                 await fetch(
@@ -128,6 +132,7 @@ async function main() {
     const web = ['stable', 'ptb', 'canary'];
     const desktop = ['stable', 'canary', 'ptb'];
     const desktopPlatforms = ['linux', 'mac', 'win'];
+    const desktopArchs = ['x86', 'x64', 'arm64'];
     const android = ['stable', 'beta', 'alpha'];
 
     for (let channel of web)
@@ -144,10 +149,18 @@ async function main() {
 
     for (let platform of desktopPlatforms)
         for (let channel of desktop)
-            await fs.writeFile(
-                path.join('./data/desktop/', platform, channel + '.json'),
-                JSON.stringify(await getDesktopVersion(channel, platform)),
-            );
+            for (let arch of desktopArchs)
+                await fs.writeFile(
+                    path.join(
+                        './data/desktop/',
+                        arch,
+                        platform,
+                        channel + '.json',
+                    ),
+                    JSON.stringify(
+                        await getDesktopVersion(channel, platform, arch),
+                    ),
+                );
 
     // there is no way rn of getting ipa to get manifest.json and grab build number and commit hash sadly
     const ios = {
