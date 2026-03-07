@@ -89,7 +89,7 @@ interface Version {
 | Platform | Supported | Commit Hash  | Build Number | All Channels |
 | -------- | --------- | ------------ | ------------ | ------------ |
 | Web      | ✅        | ✅           | ✅           | ✅           |
-| Desktop  | ⚠️        | doesnt exist | ✅           | ✅           |
+| Desktop  | ✅        | doesnt exist | ✅           | ✅           |
 | Android  | ✅        | ✅           | ✅           | ✅           |
 | iOS      | ⚠️        | ❌           | ❌           | ❌           |
 
