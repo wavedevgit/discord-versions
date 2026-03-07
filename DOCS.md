@@ -56,12 +56,12 @@ Returns [version object](#version-object)
 
 # Version Object
 
-| Field          | Type   | Description                                                          |
-| -------------- | ------ | -------------------------------------------------------------------- |
-| versionCode?   | string | The version code (e.g: 314.09)                                       |
-| versionNumber? | number | The version number (e.g: 318011) [^1]                                |
-| buildNumber?   | number | The build number (e.g: 5237)                                         |
-| commitHash?    | string | The commit hash (e.g: eefefc13ce3aac02a2c6c4e23869175c3bb47dee) [^2] |
+| Field               | Type   | Description                                                     |
+| ------------------- | ------ | --------------------------------------------------------------- |
+| versionCode?        | string | The version code (e.g: 314.09)                                  |
+| versionNumber? [^1] | number | The version number (e.g: 318011)                                |
+| buildNumber?        | number | The build number (e.g: 5237)                                    |
+| commitHash? [^2]    | string | The commit hash (e.g: eefefc13ce3aac02a2c6c4e23869175c3bb47dee) |
 
 [^1]: This is not the same as the build number.
 
