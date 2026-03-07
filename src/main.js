@@ -38,14 +38,14 @@ async function getDesktopVersion(
 ) {
     const result = {};
     if (platform === 'win') {
-        result.versionCode = (
-            await (
-                await fetch(
-                    `https://updates.discord.com/distributions/app/manifests/latest?channel=${releaseChannel}&platform=win&arch=` +
-                        arch,
-                )
-            ).json()
-        ).full.host_version.join('.');
+        const metadata = await (
+            await fetch(
+                `https://updates.discord.com/distributions/app/manifests/latest?install_id=1479828808608645253.1hMvOQdv12NQSqll16eJ9A0sdn0&channel=${releaseChannel}&platform=win&arch=` +
+                    arch,
+            )
+        ).json();
+        result.versionCode = metadata.full.host_version.join('.');
+        result.buildNumber = metadata.metadata_version;
     }
     const Platforms = {
         win: 'win',

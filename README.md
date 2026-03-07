@@ -86,12 +86,12 @@ interface Version {
 
 ## Current data progress
 
-| Platform | Supported | Commit Hash | Build Number | All Channels |
-| -------- | --------- | ----------- | ------------ | ------------ |
-| Web      | ✅        | ✅          | ✅           | ✅           |
-| Desktop  | ⚠️        | ❌          | ❌           | ✅           |
-| Android  | ✅        | ✅          | ✅           | ✅           |
-| iOS      | ⚠️        | ❌          | ❌           | ❌           |
+| Platform | Supported | Commit Hash  | Build Number | All Channels |
+| -------- | --------- | ------------ | ------------ | ------------ |
+| Web      | ✅        | ✅           | ✅           | ✅           |
+| Desktop  | ⚠️        | doesnt exist | ✅           | ✅           |
+| Android  | ✅        | ✅           | ✅           | ✅           |
+| iOS      | ⚠️        | ❌           | ❌           | ❌           |
 
 ## Why this exists?
 
