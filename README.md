@@ -11,21 +11,48 @@ data
 │   ├── beta.json
 │   └── stable.json
 ├── desktop
-│   ├── linux (Electron app for linux)
-│   │   ├── canary.json
-│   │   ├── ptb.json
-│   │   └── stable.json
-│   ├── mac (Electron app for mac)
-│   │   ├── canary.json
-│   │   ├── ptb.json
-│   │   └── stable.json
-│   └── win (Electron app for windows)
-│       ├── canary.json
-│       ├── ptb.json
-│       └── stable.json
-├── ios (Mobile app for ios)
+│   ├── arm64
+│   │   ├── linux (Electron Desktop app for linux)
+│   │   │   ├── canary.json
+│   │   │   ├── ptb.json
+│   │   │   └── stable.json
+│   │   ├── mac (Electron Desktop app for macOS)
+│   │   │   ├── canary.json
+│   │   │   ├── ptb.json
+│   │   │   └── stable.json
+│   │   └── win (Electron Desktop app for windows)
+│   │       ├── canary.json
+│   │       ├── ptb.json
+│   │       └── stable.json
+│   ├── x64
+│   │   ├── linux (Electron Desktop app for linux)
+│   │   │   ├── canary.json
+│   │   │   ├── ptb.json
+│   │   │   └── stable.json
+│   │   ├── mac (Electron Desktop app for macOS)
+│   │   │   ├── canary.json
+│   │   │   ├── ptb.json
+│   │   │   └── stable.json
+│   │   └── win (Electron Desktop app for windows)
+│   │       ├── canary.json
+│   │       ├── ptb.json
+│   │       └── stable.json
+│   └── x86
+│       ├── linux (Electron Desktop app for linux)
+│       │   ├── canary.json
+│       │   ├── ptb.json
+│       │   └── stable.json
+│       ├── mac (Electron Desktop app for macOS)
+│       │   ├── canary.json
+│       │   ├── ptb.json
+│       │   └── stable.json
+│       └── win (Electron Desktop app for windows)
+│           ├── canary.json
+│           ├── ptb.json
+│           └── stable.json
+├── ios (Mobile app for IOS)
 │   └── stable.json
-└── web (Web app)
+└── web (Web App)
     ├── canary.json
     ├── ptb.json
     └── stable.json
