@@ -2,6 +2,9 @@
 
 Discord versions with their build number for all types of platforms and apps of discord
 
+## API Docs:
+Read them at [DOCS.md](DOCS.md) 
+
 ## Data Structure
 
 ```
