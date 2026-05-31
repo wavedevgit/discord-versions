@@ -94,11 +94,14 @@ async function getAndroidVersion(releaseChannel = 'alpha') {
         await Promise.all(
             Object.keys(manifest.hashes).map(async (file) => {
                 const filePath = './android_app_workdir/base/' + file.replace('app/src/main/', '');
-                const content = await fs.readFile(filePath);
-                manifest.sha256_hashes[file] = crypto.createHash('sha256').update(content).digest('hex');
+                try {
+                    const content = await fs.readFile(filePath);
+                    manifest.sha256_hashes[file] = crypto.createHash('sha256').update(content).digest('hex');
+                } catch {
+                    // file not in APK, skip
+                }
             })
         );
-   
         await fs.rm('./android_app_workdir', { recursive: true, force: true });
     }
 
