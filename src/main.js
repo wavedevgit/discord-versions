@@ -90,7 +90,7 @@ async function getAndroidVersion(releaseChannel = 'alpha') {
                 'utf-8',
             ),
         );
-
+   
         await fs.rm('./android_app_workdir', { recursive: true, force: true });
     }
 
@@ -100,6 +100,7 @@ async function getAndroidVersion(releaseChannel = 'alpha') {
         versionCode: version.slice(0, -3) + '.' + version.slice(-2),
         commitHash: manifest?.metadata?.commit,
         buildNumber: Number(manifest?.metadata?.build),
+        rawManifest: manifest,
     };
 }
 
