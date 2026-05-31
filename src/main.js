@@ -1,6 +1,7 @@
 const fs = require('fs/promises');
 const path = require('path');
 const child_process = require('child_process');
+const crypto = require('crypto');
 const { promisify } = require('util');
 
 const execAsync = promisify(child_process.exec);
@@ -89,6 +90,13 @@ async function getAndroidVersion(releaseChannel = 'alpha') {
                 './android_app_workdir/base/assets/manifest.json',
                 'utf-8',
             ),
+        );
+        await Promise.all(
+            Object.keys(manifest.hashes).map(async (file) => {
+                const filePath = file.replace('app/src/main/', './android_app_workdir/base/');
+                const content = await fs.readFile(filePath);
+                manifest.sha256_hashes[file] = crypto.createHash('sha256').update(content).digest('hex');
+            })
         );
    
         await fs.rm('./android_app_workdir', { recursive: true, force: true });
