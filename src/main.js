@@ -93,7 +93,7 @@ async function getAndroidVersion(releaseChannel = 'alpha') {
         );
         await Promise.all(
             Object.keys(manifest.hashes).map(async (file) => {
-                const filePath = file.replace('app/src/main/', './android_app_workdir/base/');
+                const filePath = './android_app_workdir/base/' + file.replace('app/src/main/', '');
                 const content = await fs.readFile(filePath);
                 manifest.sha256_hashes[file] = crypto.createHash('sha256').update(content).digest('hex');
             })
